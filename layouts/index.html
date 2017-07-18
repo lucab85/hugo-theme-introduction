@@ -17,7 +17,7 @@
         <div class="container has-text-centered">
             <!-- Title and tagline -->
             <h1 class="bold-title {{ if .Site.Params.fadein }}fade-in one{{ end }}">
-                Hi, I'm {{ .Site.Params.firstname }}.
+                {{ i18n "Hi, I'm" }} {{ .Site.Params.firstname }}.
             </h1>
             <h3 class="subtitle is-3 {{ if.Site.Params.fadein }} fade-in two{{ end }}">
                 {{ .Site.Params.tagline }}
@@ -34,14 +34,16 @@
     <div class="hero-foot {{ if .Site.Params.fadein }}fade-in three{{ end }}">
     <hr>
     <nav class="nav-center">
-        <a class="nav-item" href="#about">About</a>  
+        <a class="nav-item" href="#about">{{ i18n "About" }}</a>  
         {{ if .Site.Params.showprojects }}
-        <a class="nav-item" href="#projects">Projects</a>  
+        <a class="nav-item" href="#projects">{{ i18n "Projects" }}</a>  
         {{ end }}
         {{ if .Site.Params.showblog }}
         <a class="nav-item" href="#blog">Blog</a>  
         {{ end }}
-        <a class="nav-item" href="#contact">Contact</a> 
+        <a class="nav-item" href="#contact">{{ i18n "Contact" }}</a> 
+        
+        {{ partial "i18n.html" . }}
     </nav>
     <hr>
     </div><!-- Done with nav bar -->
@@ -54,7 +56,7 @@
 <!-- Tell them all about it! -->
 <div class="section" id="about">
     <div class="container">
-    <h2 class="title is-2 has-text-centered">About</h2>
+    <h2 class="title is-2 has-text-centered">{{ i18n "About" }}</h2>
 
         <div class="columns"><!-- Avatar and about.md side by side except mobile -->
             <div class="column is-one-third has-text-centered"><img class="img-responsive avatar" src="/{{ .Site.Params.avatar }}" alt="My profile picture.">
@@ -97,7 +99,7 @@
 <!-- Let's chat, shall we? -->
 <div class="section" id="contact">
     <div class="container has-text-centered">
-    <h2 class="title is-2">Contact</h2>
+    <h2 class="title is-2">{{ i18n "Contact" }}</h2>
         <div class="markdown">
             {{ range .Data.Pages }}
                 {{if eq .Title "contact" }} 
@@ -150,3 +152,5 @@ $('a[href^="#"]').click(function(e) {
     return false;
 })
 </script>
+
+</body>
